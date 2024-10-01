@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container" style="max-width: 600px">
+    <div class="py-5 text-center">
+        <h2>향수 목록</h2>
+    </div>
+
+    <!-- 검색 폼 -->
+    <form th:object="${perfumeSearch}" method="get" class="form-inline">
+        <div class="row">
+            <div class="col">
+                <input type="text" th:field="*{perfumeName}" class="form-control" placeholder="향수 이름"/>
+            </div>
+            <div class="col">
+                <input type="text" th:field="*{brand}" class="form-control" placeholder="브랜드"/>
+            </div>
+            <div class="col">
+                <input type="text" th:field="*{topNote}" class="form-control" placeholder="탑 노트"/>
+            </div>
+            <div class="col">
+                <input type="text" th:field="*{middleNote}" class="form-control" placeholder="미들 노트"/>
+            </div>
+            <div class="col">
+                <input type="text" th:field="*{baseNote}" class="form-control" placeholder="베이스 노트"/>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-secondary mb-2">검색</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- 향수 등록 버튼을 한 줄 아래로 이동 -->
+    <div class="row mt-3">
+        <div class="col text-end">
+            <button class="btn btn-primary"
+                    onclick="location.href='addForm.html'"
+                    th:onclick="|location.href='@{/basic/perfumes/add}'|"
+                    type="button">향수 등록
+            </button>
+        </div>
+    </div>
+
+    <hr class="my-4">
+
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>향수 브랜드</th>
+                <th>향수 이름</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="perfume : ${perfumes}">
+                <td><a href="perfumes.html" th:href="@{|/basic/perfumes/${perfume.id}|}" th:text="${perfume.id}">향수 id</a></td>
+                <td th:text="${perfume.brand}">brand</td>
+                <td><a href="perfumes.html" th:href="@{|/basic/perfumes/${perfume.id}|}" th:text="${perfume.perfumeName}">향수명</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 메인 화면 버튼 -->
+    <div class="row mt-3">
+        <div class="col text-end">
+            <button class="btn btn-primary"
+                    onclick="location.href='perfumes.html'"
+                    th:onclick="|location.href='@{/basic/perfumes}'|"
+                    type="button">메인 화면
+            </button>
+        </div>
+    </div>
+
+</div> <!-- /container -->
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 560px;
+        }
+        .field-error {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>향수 상세</h2>
+    </div>
+
+    <!-- 추가 -->
+    <h2 th:if="${param.status}" th:text="'저장 완료'"></h2>
+
+    <div>
+        <label for="perfumeId">향수 ID</label>
+        <input type="text"
+               id="perfumeId"
+               name="perfumeId"
+               class="form-control"
+               value="1"
+               th:value="${perfume.id}"
+               readonly>
+    </div>
+    <div>
+        <label for="perfumeBrand">향수 브랜드</label>
+        <input type="text"
+               id="perfumeBrand"
+               name="perfumeBrand"
+               class="form-control"
+               value="상품A"
+               th:value="${perfume.brand}"
+               readonly>
+    </div>
+    <div>
+        <label for="perfumeName">향수 이름</label>
+        <input type="text"
+               id="perfumeName"
+               name="perfumeName"
+               class="form-control"
+               value="상품A"
+               th:value="${perfume.perfumeName}"
+               readonly>
+    </div>
+    <div>
+        <label for="topNote">탑 노트</label>
+        <input type="text"
+               id="topNote"
+               name="topNote"
+               class="form-control"
+               value="10000"
+               th:value="${perfume.topNote}"
+               readonly>
+    </div>
+    <div>
+        <label for="middleNote">미들 노트</label>
+        <input type="text"
+               id="middleNote"
+               name="middleNote"
+               class="form-control"
+               value="10"
+               th:value="${perfume.middleNote}"
+               readonly>
+    </div>
+    <div>
+        <label for="baseNote">베이스 노트</label>
+        <input type="text"
+               id="baseNote"
+               name="baseNote"
+               class="form-control"
+               value="10"
+               th:value="${perfume.baseNote}"
+               readonly>
+    </div>
+    <hr class="my-4">
+    <div class="row">
+        <div class="col">
+            <button class="w-100 btn btn-primary btn-lg"
+                    onclick="location.href='editForm.html'"
+                    th:onclick="|location.href='@{/basic/perfumes/{perfumeId}/edit(perfumeId=${perfume.id})}'|"
+                    type="button">향수 수정</button>
+        </div>
+        <div class="col">
+            <button class="w-100 btn btn-secondary btn-lg"
+                    onclick="location.href='perfumes.html'"
+                    th:onclick="|location.href='@{/basic/perfumes}'|"
+                    type="button">목록으로</button>
+        </div>
+    </div>
+</div> <!-- /container -->
+</body>
+</html>
