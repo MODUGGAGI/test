@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class Config {
 
+    //변경사항 github에 push 해보기
     @Bean
     public PerfumeService perfumeService() {
         return new PerfumeServiceV1(perfumeRepository());
